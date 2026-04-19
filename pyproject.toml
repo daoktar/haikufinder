@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "haikufinder"
+version = "2.0.0"
+description = "Find haikus (5-7-5 syllables) in English text"
+readme = "README.md"
+license = { file = "license.txt" }
+requires-python = ">=3.11"
+authors = [{ name = "Jonathan Feinberg", email = "jdf@pobox.com" }]
+keywords = ["haiku", "nlp", "syllables", "poetry"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Text Processing :: Linguistic",
+]
+dependencies = ["nltk>=3.9"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+dev = ["pytest>=8", "build>=1"]
+
+[project.urls]
+Homepage = "http://mrfeinberg.com/haikufinder/"
+
+[project.scripts]
+findhaikus = "haikufinder.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["haikufinder*"]
+
+[tool.setuptools.package-data]
+haikufinder = [
+    "cmudict/cmudict.pickle",
+    "cmudict/custom.dict",
+    "data/awkward_breaks",
+    "data/awkward_ends",
+    "data/awkward_starts",
+]
